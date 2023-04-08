@@ -49,6 +49,7 @@ namespace VSIXBuild.Wizard
 
                 replacementsDictionary["$mainmodpath$"] = form.SelectedPath;
                 replacementsDictionary["$copybuildtoplugins$"] = form.AutoCopyBuild ? "true" : "false";
+                replacementsDictionary["$removegtfoapi$"] = form.RemoveGTFOAPI ? "true" : "false";
             }
             catch (WizardCancelledException cE)
             {

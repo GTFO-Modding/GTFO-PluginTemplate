@@ -12,13 +12,14 @@ namespace VSIXBuild.Wizard
     internal class UserInputForm : Form
     {
         private bool cancelled = false;
-        private bool autocopyBuild;
+        private bool autocopyBuild, removeGTFOAPIReference;
         private string selectedPath;
         private TextBox pathTextField;
         private Label label1;
         private Label label2;
         private CheckBox checkBox_AfterBuildAction;
         private Button buttonCancel;
+        private CheckBox checkBox_RemoveGTFO_API_Dependency;
         private Button buttonDone;
 
         public UserInputForm()
@@ -36,6 +37,11 @@ namespace VSIXBuild.Wizard
             get => autocopyBuild;
         }
 
+        public bool RemoveGTFOAPI
+        {
+            get => removeGTFOAPIReference;
+        }
+
         public string SelectedPath
         {
             get => selectedPath;
@@ -49,6 +55,7 @@ namespace VSIXBuild.Wizard
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox_AfterBuildAction = new System.Windows.Forms.CheckBox();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.checkBox_RemoveGTFO_API_Dependency = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // pathTextField
@@ -78,11 +85,12 @@ namespace VSIXBuild.Wizard
             // 
             // buttonDone
             // 
+            this.buttonDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonDone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.buttonDone.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonDone.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDone.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonDone.Location = new System.Drawing.Point(488, 169);
+            this.buttonDone.Location = new System.Drawing.Point(488, 189);
             this.buttonDone.Name = "buttonDone";
             this.buttonDone.Size = new System.Drawing.Size(145, 32);
             this.buttonDone.TabIndex = 3;
@@ -115,11 +123,12 @@ namespace VSIXBuild.Wizard
             // 
             // buttonCancel
             // 
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCancel.Location = new System.Drawing.Point(14, 169);
+            this.buttonCancel.Location = new System.Drawing.Point(14, 189);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(145, 32);
             this.buttonCancel.TabIndex = 6;
@@ -127,11 +136,23 @@ namespace VSIXBuild.Wizard
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.OnClick_CancelButton);
             // 
+            // checkBox_RemoveGTFO_API_Dependency
+            // 
+            this.checkBox_RemoveGTFO_API_Dependency.AutoSize = true;
+            this.checkBox_RemoveGTFO_API_Dependency.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.checkBox_RemoveGTFO_API_Dependency.Location = new System.Drawing.Point(16, 156);
+            this.checkBox_RemoveGTFO_API_Dependency.Name = "checkBox_RemoveGTFO_API_Dependency";
+            this.checkBox_RemoveGTFO_API_Dependency.Size = new System.Drawing.Size(215, 21);
+            this.checkBox_RemoveGTFO_API_Dependency.TabIndex = 7;
+            this.checkBox_RemoveGTFO_API_Dependency.Text = "Remove GTFO-API Dependency";
+            this.checkBox_RemoveGTFO_API_Dependency.UseVisualStyleBackColor = true;
+            // 
             // UserInputForm
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(645, 213);
+            this.ClientSize = new System.Drawing.Size(645, 233);
             this.ControlBox = false;
+            this.Controls.Add(this.checkBox_RemoveGTFO_API_Dependency);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.checkBox_AfterBuildAction);
             this.Controls.Add(this.label2);
@@ -175,6 +196,7 @@ namespace VSIXBuild.Wizard
 
             selectedPath = path;
             autocopyBuild = checkBox_AfterBuildAction.Checked;
+            removeGTFOAPIReference = checkBox_RemoveGTFO_API_Dependency.Checked;
         }
 
         private void UserInputForm_Load(object sender, EventArgs e)

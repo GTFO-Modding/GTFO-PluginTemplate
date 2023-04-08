@@ -50,12 +50,12 @@
 		<Reference Include="$(InteropLibsFolder)\*.dll" Private="false" />
 		<Reference Remove="$(InteropLibsFolder)\netstandard.dll" />
 	</ItemGroup>
-
+	
 	<!-- Plugin Dependencies -->
 	<ItemGroup>
-		<Reference Include="$(PluginsFolder)\GTFO-API.dll" Private="false" />
+		$if$ ("$removegtfoapi$" == "false")<Reference Include="$(PluginsFolder)\GTFO-API.dll" Private="false" />$endif$
 	</ItemGroup>
-
+	
 	<!-- NuGet Packages -->
 	<ItemGroup>
 		<PackageReference Include="VersionInfoGenerator" Version="2.1.3" />
