@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>CoreCLR GTFO Plugin Template</Name>
+    <Description>Template Project for CoreCLR Plugin</Description>
+    <Icon>dauda.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>93b4ef63-b292-46d3-b0fc-31f398ba48be</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>My Non Suspicious Plugin</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+	<CreateInPlace>true</CreateInPlace>
+  </TemplateData>
+  <TemplateContent>
+	<Project TargetFileName="$safeprojectname$.csproj" File="ProjectTemplate.csproj" ReplaceParameters="true">
+	  <ProjectItem ReplaceParameters="true" OpenInEditor="true">EntryPoint.cs</ProjectItem>
+	  <ProjectItem ReplaceParameters="true">Logger.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Properties.props</ProjectItem>
+	  <ProjectItem ReplaceParameters="true">GameFolder.props</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+	<Assembly>VSIXBuild, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=ae4ceafa85600b55</Assembly>
+	<FullClassName>VSIXBuild.Wizard.SetupWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>
